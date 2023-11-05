@@ -1,0 +1,3 @@
+[submodule "amnezia-wg"]
+	path = amnezia-wg
+	url = https://github.com/amnezia-vpn/amnezia-wg.git

@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+
+description="WireGuard Quick Up"
+
+depend() {
+    need localmount
+    need net
+}
+
+start_pre()
+{
+    /data/pre_up.sh
+}
+
+start() {
+    for file in $(grep '\[Interface\]' /etc/wireguard/*.conf -l 2>/dev/null); do
+        interface=$(basename $file .conf)
+        ebegin "Starting WireGuard interface $interface"
+        /data/wg_quick.sh up $file
+    done
+    eend 0
+}
+
+stop() {
+    for file in $(grep '\[Interface\]' /etc/wireguard/*.conf -l 2>/dev/null); do
+        interface=$(basename $file .conf)
+        ebegin "Stopping WireGuard interface $interface"
+        /data/wg_quick.sh down $file
+    done
+    eend 0
+}

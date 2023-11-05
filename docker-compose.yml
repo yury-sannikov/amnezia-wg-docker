@@ -1,0 +1,17 @@
+version: '3'
+services:
+  wireguard:
+    image: awg-docker
+    build:
+      context: .
+      dockerfile: Dockerfile
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    # network_mode: host
+    sysctls:
+      net.ipv4.conf.all.src_valid_mark: 1
+    ports:
+    - 51820:51820/udp
+    volumes:
+    - ./wg:/etc/wireguard
