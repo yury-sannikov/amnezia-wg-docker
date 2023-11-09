@@ -1,6 +1,5 @@
 FROM golang:alpine AS builder
-RUN apk update && apk add --no-cache git make bash
-RUN apk update && apk add --no-cache build-base linux-headers
+RUN apk update && apk add --no-cache git make bash build-base linux-headers
 RUN git clone https://github.com/amnezia-vpn/amnezia-wg-tools.git
 RUN cd amnezia-wg-tools/src && \
     make && \
