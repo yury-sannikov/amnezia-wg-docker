@@ -37,7 +37,7 @@ You will get the `docker-awg-arm7.tar` archive ready to upload to the Mikrotik r
 
 Just run `docker compose up`
 
-Make sure to create a `wg` folder with the `wg0.conf` file.
+Make sure to create a `awg` folder with the `wg0.conf` file.
 
 Example `wg0.conf`:
 
@@ -104,9 +104,9 @@ Set up mount with the Wireguard configuration
 
 ```
 /container mounts
-add dst=/etc/wireguard/ name=wg_config src=/wg
+add dst=/etc/amnezia/amneziawg/ name=awg_config src=/awg
 
-/container/add cmd=/sbin/init hostname=amnezia interface=veth1 logging=yes mounts=wg_config file=docker-awg-arm7.tar
+/container/add cmd=/sbin/init hostname=amnezia interface=veth1 logging=yes mounts=awg_config file=docker-awg-arm7.tar
 ```
 
 To start the container run
