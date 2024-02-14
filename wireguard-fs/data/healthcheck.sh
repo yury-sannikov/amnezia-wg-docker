@@ -2,7 +2,7 @@
 
 
 # Container healthcheck script
-mapfile -t wg_elements < <( /usr/bin/wg )
+mapfile -t wg_elements < <( /usr/bin/awg )
 
 if [ ${#wg_elements[@]} -gt 5 ]; then
         for key in "${!wg_elements[@]}"; do
@@ -12,6 +12,6 @@ if [ ${#wg_elements[@]} -gt 5 ]; then
         done
         exit 0;
 else
-        echo "wg not started"
+        echo "awg not started"
         exit 1;
 fi
