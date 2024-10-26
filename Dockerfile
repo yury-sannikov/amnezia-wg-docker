@@ -39,3 +39,4 @@ RUN rc-update add wg-quick default
 VOLUME ["/sys/fs/cgroup"]
 HEALTHCHECK --interval=15m --timeout=30s CMD /bin/bash /data/healthcheck.sh
 CMD ["/sbin/init"]
+EXPOSE 3478
