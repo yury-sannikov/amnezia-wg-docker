@@ -8,7 +8,7 @@ RUN cd amneziawg-tools/src && \
     make
 
 FROM alpine:${ALPINE_VERSION}
-RUN apk update && apk add --no-cache bash openrc iptables iptables-legacy iproute2
+RUN apk update && apk add --no-cache bash openrc iptables iptables-legacy iproute2 openresolv
 COPY amnezia-wg/amneziawg-go /usr/bin/amneziawg-go
 COPY --from=builder /go/amneziawg-tools/src/wg /usr/bin/awg
 COPY --from=builder /go/amneziawg-tools/src/wg-quick/linux.bash /usr/bin/awg-quick
